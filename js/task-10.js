@@ -5,15 +5,16 @@ function getRandomHexColor() {
 const ElForCollection = document.querySelector('div#boxes');
 const buttonCreateEl = document.querySelector('[data-create]');
 const buttonDestroyEl = document.querySelector('[data-destroy]');
+let sizeForBox = 30;
 
 function createBoxes(amount){
   const elements = [];
 
-  for (let index = 0, size = 30; index < amount; index++, size += 10) {
+  for (let index = 0; index < amount; index++, sizeForBox += 10) {
     const element = document.createElement("div");
     element.style.backgroundColor = getRandomHexColor();
-    element.style.height = size + 'px';
-    element.style.width = size + 'px';
+    element.style.height = sizeForBox + 'px';
+    element.style.width = sizeForBox + 'px';
     elements.push(element);
   }
 
@@ -22,6 +23,7 @@ function createBoxes(amount){
 
 function destroyBoxes(){
   ElForCollection.textContent = '';
+  sizeForBox = 30;
 }
 
 buttonCreateEl.addEventListener('click', function(){
